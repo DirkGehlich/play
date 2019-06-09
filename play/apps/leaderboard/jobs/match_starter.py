@@ -3,13 +3,9 @@ import logging
 
 from django.db.models import Q
 from django.db import transaction
-from django.http import JsonResponse
 
 from apps.leaderboard.models import SnakeLeaderboard, GameLeaderboard
 from apps.core.models import Game, Snake, GameSnake
-from apps.core import engine
-
-import json
 
 logger = logging.getLogger(__name__)
 
