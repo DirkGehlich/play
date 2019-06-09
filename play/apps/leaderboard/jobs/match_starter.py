@@ -36,7 +36,7 @@ class MatchStarter:
             s = Snake.objects.get(id=snake_id)
             s.update_healthy()
             leaderboardSnake = SnakeLeaderboard.objects.get(snake=s)
-            if s.healthy == False:
+            if not s.healthy:
                 leaderboardSnake.increase_unhealthy_counter()
                 if leaderboardSnake.is_unhealthy():
                     logger.info(f"Snake {snake_id} has been unhealthy repeatedly. Removing it from leaderboard")
@@ -44,12 +44,12 @@ class MatchStarter:
                     leaderboardSnake.delete()
             else:
                 leaderboardSnake.reset_unhealthy_counter()
-			
+
         for lb_game in current_leaderboard_games:
             for gs in lb_game.game.game_snakes.all():
                 if gs.snake.id in snake_ids:
                     snake_ids.remove(gs.snake.id)
-		
+
         matches = []
         while True:
             match_size = random.randint(0, 3) + 5

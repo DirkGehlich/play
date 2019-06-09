@@ -36,7 +36,7 @@ class SnakeLeaderboard(BaseModel):
 
     def __str__(self):
         return f"{self.snake.name}"
-    
+
     def reset_unhealthy_counter(self):
         if self.unhealthy_counter > 0:
             self.unhealthy_counter = 0
@@ -44,13 +44,13 @@ class SnakeLeaderboard(BaseModel):
 
     def is_unhealthy(self):
         if self.unhealthy_counter > 5:
-            return True		
+            return True
         return False
 
     def increase_unhealthy_counter(self):
         self.unhealthy_counter += 1
         self.save(update_fields=["unhealthy_counter"])
-			
+
     class Meta:
         app_label = "leaderboard"
 
