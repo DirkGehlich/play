@@ -38,12 +38,12 @@ class SnakeLeaderboard(BaseModel):
         return f"{self.snake.name}"
 
     def reset_unhealthy_counter(self):
-        if self.unhealthy_counter > 0:
+        if self.unhealthy_counter is not None and self.unhealthy_counter > 0:
             self.unhealthy_counter = 0
             self.save(update_fields=["unhealthy_counter"])
 
     def is_unhealthy(self):
-        if self.unhealthy_counter > 5:
+        if self.unhealthy_counter is not None and self.unhealthy_counter > 5:
             return True
         return False
 
