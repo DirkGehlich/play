@@ -39,7 +39,9 @@ class MatchStarter:
             if not s.healthy:
                 leaderboardSnake.increase_unhealthy_counter()
                 if leaderboardSnake.is_unhealthy():
-                    logger.info(f"Snake {snake_id} has been unhealthy repeatedly. Removing it from leaderboard")
+                    logger.info(
+                        f"Snake {snake_id} has been unhealthy repeatedly. Removing it from leaderboard"
+                    )
                     snake_ids.remove(snake_id)
                     leaderboardSnake.delete()
             else:
